@@ -20,7 +20,13 @@ app.use(
   }),
 );
 app.use(express.json({ limit: "100kb" }));
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "BharatKisan AI Backend is running successfully",
+    status: "OK"
+  });
+});
 app.get("/api/health", getHealth);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/mandi", mandiRoutes);
@@ -32,12 +38,6 @@ app.use("/api/insights", insightsRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
-app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "BharatKisan AI Backend is running successfully",
-    status: "OK"
-  });
-});
+
 
 export default app;
