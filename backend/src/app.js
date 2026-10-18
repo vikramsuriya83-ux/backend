@@ -32,5 +32,12 @@ app.use("/api/insights", insightsRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "BharatKisan AI Backend is running successfully",
+    status: "OK"
+  });
+});
 
 export default app;
